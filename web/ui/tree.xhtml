@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC
+        "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:sp="http://sailpoint.com/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:c="http://java.sun.com/jstl/core"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:t="http://myfaces.apache.org/tomahawk">
+<body>
+<ui:composition>
+ <ui:define name="title">Employees Hierarchy</ui:define>
+ <div style="margin-left:20px">
+ <div> <h3>Employees Hierarchy</h3>
+ <div ng-app="tree" ng-controller="TreeController as tc">
+	{{attrname}} :: <select ng-options="item as item for item in attrs" name="attr" ng-model="attr"  required="true"></select>
+	Name :: 
+	<select ng-options="item as item.value for item in managers track by item.key" name="manager" ng-model="manager"></select>
+	<i class="fa fa-arrow-circle-right fa-2x" ng-click="change()" style="color:gblue"  aria-hidden="true"></i>
+	<i class="fa fa-refresh fa-2x"  ng-click="reset()" style="color:blue"  aria-hidden="true"></i>
+    <ul  ng-show="!errorFlag" class="tree">
+		<img id="spinner" ng-src="#{base.requestContextPath}/#{pluginFramework.pluginFolderName}/#{pluginFramework.uniqueName}/ui/images/spinner.svg" ng-if="dataLoading"></img>
+        <node-tree children="tc.tree"></node-tree>
+    </ul>
+	<div ng-show="tc.tree.length==0" class="warnMessage">There are no employees</div>
+
+	<div ng-show="errorFlag" class="errorMessage">{{errorMessage}}    
+	<h4>{{managerLoop}}</h4>
+	</div>
+	</div>
+</div>
+</div>
+</ui:composition>
+
+</body>
+</html>
+
