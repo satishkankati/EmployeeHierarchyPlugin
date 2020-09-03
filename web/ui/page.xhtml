@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- (c) Copyright 2016 SailPoint Technologies, Inc., All Rights Reserved. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:sp="http://sailpoint.com/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<div ng-app="emphierarchy" id="emphierarchy"
+			ng-controller="TreeController as treeCtrl">
+			<div class="panel panel-default">
+				<div class="panel-heading page-title">Employee Hierarchy</div>
+				<div class="panel-body">
+					<div class="row">
+						<label class="col-md-1 col-md-1-5" style="margin-top: 10px">
+							Employee Name: </label>
+						<div class="col-md-3">
+							<select name="manager" ng-model="treeCtrl.obj.manager"
+								ng-if="treeCtrl.managers">
+								<option ng-repeat="item in treeCtrl.managers"
+									value="{{ item.key }}">{{ item.value }}</option>
+							</select>
+							<sp-object-suggest ng-model="treeCtrl.obj.manager"
+								sp-object-suggest-id="managers"
+								sp-object-suggest-lookup-id="managers" name="manager"
+								required="true" sp-object-suggest-form-label=""
+								sp-button-aria-label="apps" sp-object-suggest-form-item="name"
+								sp-object-suggest-class="sailpoint.object.Identity"
+								sp-object-suggest-context="Global" sp-object-suggest-limit="5"></sp-object-suggest>
+						</div>
+						<label class="col-md-1 col-md-offset-1 col-md-1-5">
+							<div ng-show="treeCtrl.attributeLabel!=null">
+								<label style="margin-top: 10px">{{treeCtrl.attributeLabel}}</label>
+								:
+							</div>
+						</label>
+						<div class="col-md-3">
+							<sp-object-suggest ng-model="treeCtrl.obj.attr"
+								sp-object-suggest-id="attributeValues" name="attribute"
+								required="true" sp-object-suggest-form-label=""
+								sp-button-aria-label="apps" sp-suggest-url="getAttributeValues"
+								sp-object-suggest-search-service="treeCtrl.SPCustomObjectService"
+								sp-object-suggest-limit="5"></sp-object-suggest>
+						</div>
+
+						<div class="col-md-2">
+							<button class="btn btn-white" ng-click="treeCtrl.change()">
+								<i class="fa fa-arrow-circle-right fa-lg" style="color: gblue"
+									aria-hidden="true"></i> Submit
+							</button>
+							<button class="btn  btn-white" ng-click="treeCtrl.reset()">
+								<i class="fa fa-refresh fa-lg" style="color: gblue"
+									aria-hidden="true">Reset</i>
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<ul ng-show="!treeCtrl.errorFlag" class="tree">
+								<img id="treeCtrl.spinner"
+									ng-src="#{base.requestContextPath}/plugin/emphierarchy/ui/images/spinner.svg"
+									ng-if="dataLoading"></img>
+								<node-tree children="treeCtrl.tree"></node-tree>
+							</ul>
+							<div ng-show="treeCtrl.tree.length==0" class="warnMessage">There
+								are no employees</div>
+						</div>
+						<div ng-show="treeCtrl.errorFlag" class="errorMessage">
+							{{errorMessage}}
+							<h4>{{managerLoop}}</h4>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">Fortuna Identity Private Limited..</div>
+			</div>
+		</div>
+	</ui:composition>
+</body>
+</html>

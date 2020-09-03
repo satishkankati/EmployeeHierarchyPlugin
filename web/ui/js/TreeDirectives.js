@@ -1,6 +1,5 @@
 
-(function (ng) {
-    var app = ng.module('tree.directives', []);
+var app = angular.module('tree.directives', []);
     app.directive('nodeTree', function () {
         return {
             template: '<node ng-repeat="node in tree"></node>',
@@ -15,7 +14,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: SailPoint.CONTEXT_PATH+'/plugins/emphierarchyplugin/ui/partials/node.html', // HTML for a single node.
+            templateUrl: SailPoint.CONTEXT_PATH+'/plugin/emphierarchy/ui/partials/node.html', // HTML for a single node.
             link: function (scope, element) {
                 /*
                  * Here we are checking that if current node has children then compiling/rendering children.
@@ -50,4 +49,3 @@
             }]
         };
     });
-})(angular);

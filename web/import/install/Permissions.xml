@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<sailpoint>
+  <SPRight displayName="EmpHierarchyAccessRestServiceAllow" name="EmpHierarchyAccessRestServiceAllow">
+        <Description>Allow access to Manager Data Access REST Service</Description>
+    </SPRight>
+    <Capability displayName="EmpHierarchyPluginRestServiceAccess" name="EmpHierarchyPluginRestServiceAccess">
+        <Description>Allow access to Manager Tree  Plugin REST Service</Description>
+        <RightRefs>
+            <Reference class="sailpoint.object.SPRight" name="EmpHierarchyAccessRestServiceAllow"/>
+        </RightRefs>
+    </Capability>
+    <SPRight displayName="EmpHierarchyPluginRight" name="EmpHierarchyPluginRight">
+        <Description>Access to use the Manager Tree Plugin</Description>
+    </SPRight>
+
+    <SPRight displayName="EmpHierarchyPluginIconRight" name="EmpHierarchyPluginIconRight">
+        <Description>Access to see (load) the System Health Plugin header inject snippet</Description>
+    </SPRight>
+
+    <Capability displayName="EmpHierarchyPluginCapability" name="EmpHierarchyPluginCapability">
+        <Description>Allow access to Hello World Plugin</Description>
+        <RightRefs>
+            <Reference class="sailpoint.object.SPRight" name="EmpHierarchyPluginRight"/>
+            <Reference class="sailpoint.object.SPRight" name="EmpHierarchyPluginIconRight"/>
+        </RightRefs>
+    </Capability>
+</sailpoint>

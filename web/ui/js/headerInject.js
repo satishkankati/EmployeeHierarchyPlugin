@@ -1,4 +1,4 @@
-var employeeUrl = SailPoint.CONTEXT_PATH + '/pluginPage.jsf?pn=emphierarchyplugin';
+var employeeUrl = SailPoint.CONTEXT_PATH + '/plugins/pluginPage.jsf?pn=emphierarchy';
 var jQueryClone = jQuery;
 var empstatusClass = 'healthSuccess';
 
