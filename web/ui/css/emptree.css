@@ -1,50 +1,50 @@
-@keyframes blink-animation {
+#emphierarchy @keyframes blink-animation {
   to {
     visibility: hidden;
   }
 }
-@-webkit-keyframes blink-animation {
+#emphierarchy @-webkit-keyframes blink-animation {
   to {
     visibility: hidden;
   }
+}
+#emphierarchy .col-md-1-5 {
+	width:10%
+}
+#emphierarchy .page-title {
+	font-size: 16px;
+	font-weight: normal;
+	color: #7c8184;
+	text-align: left;
+	vertical-align: middle
 }
 
-.healthOK {
+#emphierarchy .healthOK {
     color: #AAFFAA;
 }
 
-.healthSuccess {
+#emphierarchy .healthSuccess {
 	color: green;
-	animation: blink-animation 1.5s steps(10, start) infinite;
-	-webkit-animation: blink-animation 1.5s steps(10, start) infinite;
 }
 
-.healthError {
-	color: red;
-	animation: blink-animation 1.5s steps(10, start) infinite;
-	-webkit-animation: blink-animation 1.5s steps(10, start) infinite;
-}
 
-.healthUNKNOWN {
-	color: grey;
-}
-ul.tree {
+#emphierarchy ul.tree {
     list-style: none;
 }
 
-ul.tree > li {
+#emphierarchy ul.tree > li {
     margin:10px;
 }
 
-ul.tree > li > span {
+#emphierarchy ul.tree > li > span {
     cursor: pointer;
 }
-.warnMessage {
+#emphierarchy .warnMessage {
 	color: #9F6000;
 	font-size:15px;	
 }
 
-.errorMessage {
+#emphierarchy .errorMessage {
 	color: #D8000C;
 	font-size:15px;
 }
